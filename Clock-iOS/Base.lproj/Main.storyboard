@@ -31,24 +31,18 @@
                     <view key="view" contentMode="scaleToFill" id="R2D-s0-y2h">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8ma-ak-bW5">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="separatorColor"/>
-                            </view>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="DLz-mQ-ble"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Alarme" id="Rwa-Md-Uzh">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="nsr-px-U6k">
-                            <color key="tintColor" systemColor="systemYellowColor"/>
+                            <color key="tintColor" systemColor="systemOrangeColor"/>
                             <connections>
                                 <action selector="openAddClock:" destination="BYZ-38-t0r" id="Hkl-3W-dE9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -57,7 +51,7 @@
         <!--Add Clock View Controller-->
         <scene sceneID="X6k-Nt-fdj">
             <objects>
-                <viewController storyboardIdentifier="AddClockViewController" interfaceStyle="dark" id="IeY-iC-XuB" userLabel="Add Clock View Controller" customClass="AddClockViewController" customModule="Clock_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddClockViewController" title="Ajouter une alarme" id="IeY-iC-XuB" userLabel="Add Clock View Controller" customClass="AddClockViewController" customModule="Clock_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="E7P-Yd-ibd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -77,6 +71,14 @@
                         <viewLayoutGuide key="safeArea" id="YMz-3x-I6I"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Ajouter une alarme" id="XeN-Ia-ZmQ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Pxs-Ix-TSL">
+                            <color key="tintColor" systemColor="systemOrangeColor"/>
+                            <connections>
+                                <action selector="openAddClock:" destination="BYZ-38-t0r" id="649-bM-KCX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fmg-iU-YVc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -85,14 +87,11 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="separatorColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
