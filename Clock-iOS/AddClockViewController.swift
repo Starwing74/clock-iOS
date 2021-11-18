@@ -7,50 +7,49 @@
 
 import UIKit
 
-var id: Int! = 0
-let defaults = UserDefaults.standard
-var alarmeIDD: [String] = []
-
 class AddClockViewController: UIViewController {
 
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var clockNameText: UITextField!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
+    
     @IBAction func saveClock(_ sender: UIBarButtonItem) {
-        print("sauvergarder")
-
+        print("Adding new alarm")
+        let defaults = UserDefaults.standard
+        // Get name and time from UI
         let time: Date = datePicker.date
         let name: String = clockNameText.text ?? ""
 
+        // Parse time to desired format
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ";
-        print(dateFormatter.string(from: time))
 
-        
-        if
-        
-        alarmeIDD[id] = "{id:\(id!), time: \(time), name: \(name), enable: true}"
-        
-        print(alarmeIDD[id])
-        
-        //donner json à sauvegarder
-        
-        let authtoken = alarmeIDD[id]
-            // Userdefaults helps to store session data locally
-        defaults.set(authtoken, forKey: "alarme_\(id)")
+        // Get existing data in defaults
+        var idCounter = defaults.integer(forKey: "idCounter")
+        var alarmIds = defaults.array(forKey: "alarmIds")  as? [Int] ?? [Int]()
 
-        defaults.synchronize()
+        // Create JSON from data
+        let alarm: Alarm = Alarm(id: idCounter, name: name, time: dateFormatter.string(from: time), enabled: true)
+        let jsonData = try! JSONEncoder().encode(alarm)
+        let jsonString = String(data: jsonData, encoding: .utf8)!
         
-        //print("\(UserDefaults.standard.array(forKey: <#T##String#>))")
+        // Add the alarm id so we can keep track of it
+        alarmIds.append(idCounter)
         
-        id += 1
+        idCounter += 1
         
+        // Set values in defaults
+        defaults.set(idCounter, forKey: "idCounter")
+        defaults.set(alarmIds, forKey: "alarmIds")
+        defaults.set(jsonString, forKey: "alarm\(idCounter - 1)")
+
+        print("JSON: \(jsonString)")
+        print("IDS: \(alarmIds)")
+        print("COUNTER: \(idCounter)")
     }
 }
 

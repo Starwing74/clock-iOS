@@ -7,22 +7,26 @@
 
 import UIKit
 
+struct Alarm: Codable {
+    var id: Int
+    var name: String?
+    var time: String
+    var enabled: Bool
+}
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var alarmsTable: UITableView!
     var clockJson = "{\"id\":0, \"time\": \"2021-11-18T14:08:26+01:00\", \"name\":\"Travail\", \"enabled\": true}".data(using: .utf8)!
 
-    struct Alarm: Codable {
-        var id: Int
-        var name: String?
-        var time: String
-        var enabled: Bool
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.alarmsTable?.delegate = self
         self.alarmsTable?.dataSource = self
+        
+        let defaults = UserDefaults.standard
+        defaults.set(0, forKey: "idCounter")
+        defaults.set([], forKey: "alarmIds")
     }
 
     @IBAction func openAddClock(_ sender: UIBarButtonItem) {
