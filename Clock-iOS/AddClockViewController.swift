@@ -16,7 +16,7 @@ class AddClockViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func openAddClock(_ sender: Any) {
+    @IBAction func openAddClock(_ sender: UIButton) {
         
         print("ok")
         

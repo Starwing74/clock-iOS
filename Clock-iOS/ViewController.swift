@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func openAddClock(_ sender: Any) {
+    @IBAction func openAddClock(_ sender: UIBarButtonItem) {
         
         print("ok")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
