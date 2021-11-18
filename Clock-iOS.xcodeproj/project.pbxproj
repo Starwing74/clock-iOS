@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A0642E5274642E60079859D /* AddClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0642E4274642E60079859D /* AddClockViewController.swift */; };
 		2A9857A5274632B100D4B53C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9857A4274632B100D4B53C /* AppDelegate.swift */; };
 		2A9857A7274632B100D4B53C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9857A6274632B100D4B53C /* SceneDelegate.swift */; };
 		2A9857A9274632B100D4B53C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9857A8274632B100D4B53C /* ViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A0642E4274642E60079859D /* AddClockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClockViewController.swift; sourceTree = "<group>"; };
 		2A9857A1274632B100D4B53C /* Clock-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Clock-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A9857A4274632B100D4B53C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A9857A6274632B100D4B53C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				2A9857A4274632B100D4B53C /* AppDelegate.swift */,
 				2A9857A6274632B100D4B53C /* SceneDelegate.swift */,
 				2A9857A8274632B100D4B53C /* ViewController.swift */,
+				2A0642E4274642E60079859D /* AddClockViewController.swift */,
 				2A9857AA274632B100D4B53C /* Main.storyboard */,
 				2A9857AD274632B300D4B53C /* Assets.xcassets */,
 				2A9857AF274632B300D4B53C /* LaunchScreen.storyboard */,
@@ -259,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A9857A9274632B100D4B53C /* ViewController.swift in Sources */,
+				2A0642E5274642E60079859D /* AddClockViewController.swift in Sources */,
 				2A9857A5274632B100D4B53C /* AppDelegate.swift in Sources */,
 				2A9857A7274632B100D4B53C /* SceneDelegate.swift in Sources */,
 			);
@@ -436,7 +440,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Clock-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -444,6 +450,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.iut1.Clock-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -454,7 +461,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Clock-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -462,6 +471,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.iut1.Clock-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
