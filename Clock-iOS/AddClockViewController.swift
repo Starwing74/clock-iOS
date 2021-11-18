@@ -8,15 +8,13 @@
 import UIKit
 
 class AddClockViewController: UIViewController {
-
-    @IBOutlet var addClockView: UIPageViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func saveClock(_ sender: UIButton) {
+    @IBAction func saveClock(_ sender: UIBarButtonItem) {
         print("sauvergarder")
     }
 }
