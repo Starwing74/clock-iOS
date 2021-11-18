@@ -28,9 +28,10 @@ class AddClockViewController: UIViewController {
         let time: Date = datePicker.date
         let name: String = clockNameText.text ?? ""
 
-        // let dateFormatter = DateFormatter()
-        // dateFormatter.dateFormat = "HH:mm"
-        // print(dateFormatter.string(from: time))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ";
+        print(dateFormatter.string(from: time))
+
         
         if
         

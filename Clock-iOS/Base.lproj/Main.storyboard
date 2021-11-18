@@ -31,8 +31,71 @@
                     <view key="view" contentMode="scaleToFill" id="R2D-s0-y2h">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="90" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Y9p-oy-Qkn">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dummyAlarm" rowHeight="90" id="lvw-lX-z9P" customClass="AlarmTableViewCell" customModule="Clock_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lvw-lX-z9P" id="Ssa-sW-zfz">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dummy Alarm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56B-up-Uy9">
+                                                    <rect key="frame" x="20" y="11" width="108" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G4B-Td-7ox" userLabel="Enabled Switch">
+                                                    <rect key="frame" x="345" y="29.5" width="51" height="31"/>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L M M J V S D" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usO-im-VHH">
+                                                    <rect key="frame" x="226" y="34.5" width="107" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m7g-7z-OhZ">
+                                                    <rect key="frame" x="20" y="29" width="121" height="54"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                            <constraints>
+                                                <constraint firstItem="usO-im-VHH" firstAttribute="centerY" secondItem="Ssa-sW-zfz" secondAttribute="centerY" id="0YS-LZ-qAW"/>
+                                                <constraint firstItem="56B-up-Uy9" firstAttribute="leading" secondItem="Ssa-sW-zfz" secondAttribute="leadingMargin" id="Uhw-JL-zCv"/>
+                                                <constraint firstItem="56B-up-Uy9" firstAttribute="top" secondItem="Ssa-sW-zfz" secondAttribute="topMargin" id="YGS-JX-Wgh"/>
+                                                <constraint firstItem="m7g-7z-OhZ" firstAttribute="leading" secondItem="Ssa-sW-zfz" secondAttribute="leading" constant="20" symbolic="YES" id="Yeo-lT-b5L"/>
+                                                <constraint firstAttribute="bottom" secondItem="m7g-7z-OhZ" secondAttribute="bottom" constant="7" id="kce-3p-dnA"/>
+                                                <constraint firstItem="G4B-Td-7ox" firstAttribute="centerY" secondItem="Ssa-sW-zfz" secondAttribute="centerY" id="pRS-lq-0oX"/>
+                                                <constraint firstItem="G4B-Td-7ox" firstAttribute="trailing" secondItem="Ssa-sW-zfz" secondAttribute="trailingMargin" id="rlo-F5-2mu"/>
+                                                <constraint firstItem="G4B-Td-7ox" firstAttribute="leading" secondItem="usO-im-VHH" secondAttribute="trailing" constant="12" id="yLB-9S-bKZ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                        <connections>
+                                            <outlet property="daysLabel" destination="usO-im-VHH" id="H3T-f3-84b"/>
+                                            <outlet property="enabledSwitch" destination="G4B-Td-7ox" id="LyC-Ve-mzL"/>
+                                            <outlet property="nameLabel" destination="56B-up-Uy9" id="Kfp-1l-OiJ"/>
+                                            <outlet property="timeLabel" destination="m7g-7z-OhZ" id="JnT-wB-jUo"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="DLz-mQ-ble"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Y9p-oy-Qkn" firstAttribute="trailing" secondItem="DLz-mQ-ble" secondAttribute="trailing" id="1op-lS-Va7"/>
+                            <constraint firstItem="Y9p-oy-Qkn" firstAttribute="leading" secondItem="DLz-mQ-ble" secondAttribute="leading" id="QZV-Sd-bmn"/>
+                            <constraint firstItem="Y9p-oy-Qkn" firstAttribute="top" secondItem="DLz-mQ-ble" secondAttribute="top" id="Qft-Us-bjq"/>
+                            <constraint firstAttribute="bottom" secondItem="Y9p-oy-Qkn" secondAttribute="bottom" id="rzV-08-7Wa"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Alarme" id="Rwa-Md-Uzh">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="nsr-px-U6k">
@@ -43,6 +106,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="alarmsTable" destination="Y9p-oy-Qkn" id="NLb-W1-MSo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -106,6 +172,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
