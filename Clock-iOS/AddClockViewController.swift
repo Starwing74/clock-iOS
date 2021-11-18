@@ -33,8 +33,9 @@ class AddClockViewController: UIViewController {
         var alarmIds = defaults.array(forKey: "alarmIds")  as? [Int] ?? [Int]()
 
         // Create JSON from data
-        let alarm: Alarm = Alarm(id: idCounter, name: name, time: dateFormatter.string(from: time), enabled: true)
-        let jsonData = try! JSONEncoder().encode(alarm)
+        let alarm: Alarm = Alarm(id: idCounter, name: name, isoDate: dateFormatter.string(from: time), enabled: true)
+        print(alarm.toJSON())
+        /*let jsonData = try! JSONEncoder().encode(alarm)
         let jsonString = String(data: jsonData, encoding: .utf8)!
         
         // Add the alarm id so we can keep track of it
@@ -49,7 +50,7 @@ class AddClockViewController: UIViewController {
 
         print("JSON: \(jsonString)")
         print("IDS: \(alarmIds)")
-        print("COUNTER: \(idCounter)")
+        print("COUNTER: \(idCounter)")*/
     }
 }
 

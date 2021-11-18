@@ -30,7 +30,7 @@ class AlarmTableViewCell: UITableViewCell {
         let dateFormatter = DateFormatter()
         // Parse date
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ";
-        let date = dateFormatter.date(from: "2021-11-18T14:08:26+01:00")!
+        let date = dateFormatter.date(from: isoDate)!
         // Set text value
         dateFormatter.dateFormat = "HH:mm"
         timeLabel.text = dateFormatter.string(from: date)
