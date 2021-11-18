@@ -15,12 +15,9 @@ class AddClockViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-    @IBAction func openAddClock(_ sender: UIButton) {
-        
-        print("ok")
-        
+    
+    @IBAction func saveClock(_ sender: UIButton) {
+        print("sauvergarder")
     }
-
 }
 

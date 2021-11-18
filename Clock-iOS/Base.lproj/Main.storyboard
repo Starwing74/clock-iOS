@@ -74,9 +74,6 @@
                     <navigationItem key="navigationItem" title="Ajouter une alarme" id="XeN-Ia-ZmQ">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="Pxs-Ix-TSL">
                             <color key="tintColor" systemColor="systemOrangeColor"/>
-                            <connections>
-                                <action selector="openAddClock:" destination="BYZ-38-t0r" id="649-bM-KCX"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
