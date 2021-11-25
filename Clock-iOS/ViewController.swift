@@ -20,8 +20,8 @@ class Alarm {
     var isoDate: String
     var enabled: Bool
 
-    init(id: Int, name: String?, isoDate: String, enabled: Bool) {
-        self.id = id
+    init(name: String?, isoDate: String, enabled: Bool) {
+        self.id = -1
         self.name = name ?? ""
         self.isoDate = isoDate
         self.enabled = enabled
@@ -36,6 +36,24 @@ class Alarm {
     
     func selfUpdate() {
         let defaults = UserDefaults.standard
+        
+        // Get existing data in defaults
+        var alarmIds = defaults.array(forKey: "alarmIds")  as? [Int] ?? [Int]()
+
+        // Add the alarm id so we can keep track of it (if it doesn't exists)
+        if (!alarmIds.contains(id)) {
+            var idCounter = defaults.integer(forKey: "idCounter")
+            // First set id and add it
+            alarmIds.append(idCounter)
+            self.id = idCounter
+            
+            // Then increment id and set new value
+            idCounter += 1
+            defaults.set(idCounter, forKey: "idCounter")
+            defaults.set(alarmIds, forKey: "alarmIds")
+        }
+        
+        // Set values in defaults
         defaults.set(toJSON(), forKey: "alarm\(id)")
     }
     
@@ -62,8 +80,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.alarmIds = alarmIds
         
         
-        // defaults.set(0, forKey: "idCounter")
-        // defaults.set([], forKey: "alarmIds")
+        defaults.set(0, forKey: "idCounter")
+        defaults.set([], forKey: "alarmIds")
     }
 
     @IBAction func openAddClock(_ sender: UIBarButtonItem) {
@@ -87,17 +105,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let alarmId = alarmIds.last
         _ = alarmIds.popLast()
         
-        /*// Get it's json and parse it
+        // Get it's json and parse it
         let decoder = JSONDecoder()
         let clockJson = defaults.string(forKey: "alarm\(alarmId ?? 0)")!.data(using: .utf8)!
+        print(clockJson)
         let alarm = try! decoder.decode(AlarmStruct.self, from: clockJson)
-        print(alarm)*/
         
         // Update cell values
         let cell = alarmsTable.dequeueReusableCell(withIdentifier: "dummyAlarm", for: indexPath) as! AlarmTableViewCell
-        /*cell.setName(name: alarm.name ?? "")
+        cell.setName(name: alarm.name ?? "")
         cell.setTime(isoDate: alarm.isoDate)
-        cell.setEnabled(enabled: alarm.enabled)*/
+        cell.setEnabled(enabled: alarm.enabled)
         
         return cell
     }
