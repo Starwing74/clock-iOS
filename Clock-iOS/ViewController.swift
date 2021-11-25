@@ -87,17 +87,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let alarmId = alarmIds.last
         _ = alarmIds.popLast()
         
-        // Get it's json and parse it
+        /*// Get it's json and parse it
         let decoder = JSONDecoder()
         let clockJson = defaults.string(forKey: "alarm\(alarmId ?? 0)")!.data(using: .utf8)!
         let alarm = try! decoder.decode(AlarmStruct.self, from: clockJson)
-        print(alarm)
+        print(alarm)*/
         
         // Update cell values
         let cell = alarmsTable.dequeueReusableCell(withIdentifier: "dummyAlarm", for: indexPath) as! AlarmTableViewCell
-        cell.setName(name: alarm.name ?? "")
+        /*cell.setName(name: alarm.name ?? "")
         cell.setTime(isoDate: alarm.isoDate)
-        cell.setEnabled(enabled: alarm.enabled)
+        cell.setEnabled(enabled: alarm.enabled)*/
         
         return cell
     }
