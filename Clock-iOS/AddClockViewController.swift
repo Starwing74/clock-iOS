@@ -18,8 +18,6 @@ class AddClockViewController: UIViewController {
     }
     
     @IBAction func saveClock(_ sender: UIBarButtonItem) {
-        print("Adding new alarm")
-        let defaults = UserDefaults.standard
         // Get name and time from UI
         let time: Date = datePicker.date
         let name: String = clockNameText.text ?? ""
@@ -29,8 +27,32 @@ class AddClockViewController: UIViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ";
 
         // Create JSON from data
-        let alarm: Alarm = Alarm(name: name, isoDate: dateFormatter.string(from: time), enabled: true)
-        alarm.selfUpdate();
+        let alarm = Alarm(name: name, isoDate: dateFormatter.string(from: time), enabled: true)
+        
+        // Create notification
+        // Notification info
+        let content = UNMutableNotificationContent()
+        content.title = alarm.name
+        content.body = "Cliquez ici pour arrêter l'alarme"
+
+        // Notification date
+        let date = dateFormatter.date(from: alarm.isoDate)!
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day, .month, .year, .hour, .minute, .timeZone], from: date)
+        
+        // Notification trigger
+        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+        let notificationID = UUID().uuidString
+        let request = UNNotificationRequest(identifier: notificationID, content: content, trigger: trigger)
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.add(request) { (error) in
+            if (error != nil) {
+                print(error ?? "no error")
+                print("error happened")
+            }
+            print("Notification added")
+        }
+        print("Alarm added")
     }
 }
 

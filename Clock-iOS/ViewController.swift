@@ -7,34 +7,51 @@
 
 import UIKit
 
-struct AlarmStruct: Codable {
-    var id: Int
-    var name: String
-    var isoDate: String
-    var enabled: Bool
-}
-
 class Alarm {
-    var id: Int
-    var name: String
-    var isoDate: String
-    var enabled: Bool
-
-    init(name: String?, isoDate: String, enabled: Bool) {
+    private var id: Int
+    private var allowSelfUpdate: Bool = false
+    public var name: String { didSet { self.selfUpdate() }}
+    public var isoDate: String { didSet { self.selfUpdate() }}
+    public var enabled: Bool { didSet { self.selfUpdate() }}
+    private struct AlarmStruct: Codable {
+        var id: Int
+        var name: String
+        var isoDate: String
+        var enabled: Bool
+    }
+    
+    public init(alarmJSON: String) {
+        let decoder = JSONDecoder()
+        let alarmJSONData = alarmJSON.data(using: .utf8)!
+        let alarmStruct = try! decoder.decode(AlarmStruct.self, from: alarmJSONData)
+        
+        self.id = alarmStruct.id
+        self.name = alarmStruct.name
+        self.isoDate = alarmStruct.isoDate
+        self.enabled = alarmStruct.enabled
+        self.allowSelfUpdate = true
+    }
+    
+    public init(name: String?, isoDate: String, enabled: Bool) {
         self.id = -1
         self.name = name ?? ""
         self.isoDate = isoDate
         self.enabled = enabled
+        self.allowSelfUpdate = true
+        selfUpdate();
     }
     
-    func toJSON() -> String {
+    private func toJSON() -> String {
         let tempAlarm: AlarmStruct = AlarmStruct(id: id, name: name, isoDate: isoDate, enabled: enabled)
         let jsonData = try! JSONEncoder().encode(tempAlarm)
         let jsonString = String(data: jsonData, encoding: .utf8)!
         return jsonString
     }
     
-    func selfUpdate() {
+    private func selfUpdate() {
+        
+        if (!allowSelfUpdate) { return } // Prevent self update spam on initaliaztion
+        
         let defaults = UserDefaults.standard
         
         // Get existing data in defaults
@@ -56,17 +73,11 @@ class Alarm {
         // Set values in defaults
         defaults.set(toJSON(), forKey: "alarm\(id)")
     }
-    
-    func setEnabled(enabled: Bool) {
-        self.enabled = enabled
-        selfUpdate()
-    }
 }
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var alarmsTable: UITableView!
-    // var clockJson = "{\"id\":0, \"time\": \"2021-11-18T14:08:26+01:00\", \"name\":\"Travail\", \"enabled\": true}".data(using: .utf8)!
     var alarmIds: [Int] = []
     
     override func viewDidLoad() {
@@ -79,9 +90,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let alarmIds = defaults.array(forKey: "alarmIds")  as? [Int] ?? [Int]()
         self.alarmIds = alarmIds
         
+        let  authOption = UNAuthorizationOptions.init(arrayLiteral: .alert, .badge, .sound)
         
-        defaults.set(0, forKey: "idCounter")
-        defaults.set([], forKey: "alarmIds")
+        UNUserNotificationCenter.current().requestAuthorization(options: authOption) { (success, error) in
+            if let error = error {
+                print("Error:", error)
+            }
+        }
+        
+        /*defaults.set(0, forKey: "idCounter")
+        defaults.set([], forKey: "alarmIds")*/
     }
 
     @IBAction func openAddClock(_ sender: UIBarButtonItem) {
@@ -105,15 +123,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let alarmId = alarmIds.last
         _ = alarmIds.popLast()
         
-        // Get it's json and parse it
-        let decoder = JSONDecoder()
-        let clockJson = defaults.string(forKey: "alarm\(alarmId ?? 0)")!.data(using: .utf8)!
-        print(clockJson)
-        let alarm = try! decoder.decode(AlarmStruct.self, from: clockJson)
+        // Create Alarm object
+        let alarmJSON: String = defaults.string(forKey: "alarm\(alarmId ?? 0)")!
+        let alarm = Alarm(alarmJSON: alarmJSON)
         
         // Update cell values
         let cell = alarmsTable.dequeueReusableCell(withIdentifier: "dummyAlarm", for: indexPath) as! AlarmTableViewCell
-        cell.setName(name: alarm.name ?? "")
+        cell.setAlarm(alarm: alarm) // Create Alarm object from AlarmStruct
+        cell.setName(name: alarm.name)
         cell.setTime(isoDate: alarm.isoDate)
         cell.setEnabled(enabled: alarm.enabled)
         

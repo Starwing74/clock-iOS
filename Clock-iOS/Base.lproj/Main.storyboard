@@ -44,13 +44,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dummy Alarm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56B-up-Uy9">
-                                                    <rect key="frame" x="20" y="11" width="108" height="21"/>
+                                                    <rect key="frame" x="20" y="11" width="374" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G4B-Td-7ox" userLabel="Enabled Switch">
                                                     <rect key="frame" x="345" y="29.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="switchChanged" destination="lvw-lX-z9P" eventType="valueChanged" id="sYf-uA-eCM"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L M M J V S D" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usO-im-VHH">
                                                     <rect key="frame" x="226" y="34.5" width="107" height="21"/>
@@ -58,11 +61,12 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m7g-7z-OhZ">
-                                                    <rect key="frame" x="20" y="29" width="121" height="54"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m7g-7z-OhZ">
+                                                    <rect key="frame" x="17" y="29" width="121" height="54"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <size key="shadowOffset" width="0.0" height="0.0"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemGray5Color"/>
@@ -71,7 +75,9 @@
                                                 <constraint firstItem="56B-up-Uy9" firstAttribute="leading" secondItem="Ssa-sW-zfz" secondAttribute="leadingMargin" id="Uhw-JL-zCv"/>
                                                 <constraint firstItem="56B-up-Uy9" firstAttribute="top" secondItem="Ssa-sW-zfz" secondAttribute="topMargin" id="YGS-JX-Wgh"/>
                                                 <constraint firstItem="m7g-7z-OhZ" firstAttribute="leading" secondItem="Ssa-sW-zfz" secondAttribute="leading" constant="20" symbolic="YES" id="Yeo-lT-b5L"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="56B-up-Uy9" secondAttribute="trailing" id="g6Z-R7-x42"/>
                                                 <constraint firstAttribute="bottom" secondItem="m7g-7z-OhZ" secondAttribute="bottom" constant="7" id="kce-3p-dnA"/>
+                                                <constraint firstItem="usO-im-VHH" firstAttribute="leading" secondItem="m7g-7z-OhZ" secondAttribute="trailing" constant="85" id="nEZ-If-QYe"/>
                                                 <constraint firstItem="G4B-Td-7ox" firstAttribute="centerY" secondItem="Ssa-sW-zfz" secondAttribute="centerY" id="pRS-lq-0oX"/>
                                                 <constraint firstItem="G4B-Td-7ox" firstAttribute="trailing" secondItem="Ssa-sW-zfz" secondAttribute="trailingMargin" id="rlo-F5-2mu"/>
                                                 <constraint firstItem="G4B-Td-7ox" firstAttribute="leading" secondItem="usO-im-VHH" secondAttribute="trailing" constant="12" id="yLB-9S-bKZ"/>

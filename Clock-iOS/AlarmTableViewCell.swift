@@ -13,11 +13,16 @@ class AlarmTableViewCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var daysLabel: UILabel!
     @IBOutlet weak var enabledSwitch: UISwitch!
+    private var alarm: Alarm!
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
+    func setAlarm(alarm: Alarm) {
+        self.alarm = alarm
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -40,4 +45,9 @@ class AlarmTableViewCell: UITableViewCell {
         enabledSwitch.setOn(enabled, animated: true)
     }
     
-} // 2021-11-18 09:55:02 +0000
+    @IBAction func switchChanged() {
+        alarm.enabled = enabledSwitch.isOn
+        print("Switch changed")
+    }
+    
+}
