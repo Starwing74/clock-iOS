@@ -71,4 +71,24 @@ class Alarm {
         // Set values in defaults
         defaults.set(toJSON(), forKey: "alarm\(id)")
     }
+    
+    public func delete() {
+        let defaults = UserDefaults.standard
+        
+        // Get existing data in defaults
+        var alarmIds = defaults.array(forKey: "alarmIds")  as? [Int] ?? [Int]()
+
+        // Add the alarm id so we can keep track of it (if it doesn't exists)
+        if (alarmIds.contains(id)) {
+            // Remove alarm id from list
+            let alarmIdIndex = alarmIds.firstIndex(of: id)!
+            alarmIds.remove(at: alarmIdIndex)
+            
+            // Remove alarm from defaults
+            defaults.removeObject(forKey: "alarm\(id)")
+            
+            // Update values
+            defaults.set(alarmIds, forKey: "alarmIds")
+        }
+    }
 }

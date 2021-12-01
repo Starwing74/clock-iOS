@@ -13,14 +13,7 @@ class AlarmTableViewCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var daysLabel: UILabel!
     @IBOutlet weak var enabledSwitch: UISwitch!
-    private var alarm: Alarm!
-
-    /**
-     This is used to pass the data from the Alarm
-     */
-    public func setAlarm(alarm: Alarm) {
-        self.alarm = alarm
-    }
+    public var alarm: Alarm!
     
     /**
      Set weither the alarm is selected or not

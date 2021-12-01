@@ -109,7 +109,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="nsr-px-U6k">
                             <color key="tintColor" systemColor="systemOrangeColor"/>
                             <connections>
-                                <action selector="openAddClock:" destination="BYZ-38-t0r" id="Hkl-3W-dE9"/>
+                                <action selector="openAddClockButtonClick:" destination="BYZ-38-t0r" id="dT0-hI-qqJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -153,7 +153,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9qd-sJ-iXQ">
                                 <rect key="frame" x="20" y="330" width="374" height="31"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3H-1k-JgE" customClass="DayButton" customModule="Clock_iOS" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3H-1k-JgE" customClass="UIDayButton" customModule="Clock_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="53.5" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="L" cornerStyle="fixed">
@@ -171,7 +171,7 @@
                                             <action selector="toggleButtonWithSourceButton:" destination="IeY-iC-XuB" eventType="touchUpInside" id="hSl-hh-QF7"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gd-nI-gEN" customClass="DayButton" customModule="Clock_iOS" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gd-nI-gEN" customClass="UIDayButton" customModule="Clock_iOS" customModuleProvider="target">
                                         <rect key="frame" x="53.5" y="0.0" width="53.5" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="M" cornerStyle="fixed">
@@ -189,7 +189,7 @@
                                             <action selector="toggleButtonWithSourceButton:" destination="IeY-iC-XuB" eventType="touchUpInside" id="H0V-wb-d4q"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xpm-1t-9tQ" customClass="DayButton" customModule="Clock_iOS" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xpm-1t-9tQ" customClass="UIDayButton" customModule="Clock_iOS" customModuleProvider="target">
                                         <rect key="frame" x="107" y="0.0" width="53.5" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="M" cornerStyle="fixed">
@@ -207,7 +207,7 @@
                                             <action selector="toggleButtonWithSourceButton:" destination="IeY-iC-XuB" eventType="touchUpInside" id="FWI-4L-YeE"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfY-Z3-3OS" customClass="DayButton" customModule="Clock_iOS" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfY-Z3-3OS" customClass="UIDayButton" customModule="Clock_iOS" customModuleProvider="target">
                                         <rect key="frame" x="160.5" y="0.0" width="53" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="J" cornerStyle="fixed">
@@ -225,7 +225,7 @@
                                             <action selector="toggleButtonWithSourceButton:" destination="IeY-iC-XuB" eventType="touchUpInside" id="hdV-vT-GYf"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Acr-VK-bF4" customClass="DayButton" customModule="Clock_iOS" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Acr-VK-bF4" customClass="UIDayButton" customModule="Clock_iOS" customModuleProvider="target">
                                         <rect key="frame" x="213.5" y="0.0" width="53.5" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="V" cornerStyle="fixed">
@@ -243,7 +243,7 @@
                                             <action selector="toggleButtonWithSourceButton:" destination="IeY-iC-XuB" eventType="touchUpInside" id="nyC-47-qZ9"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YOG-TV-Ju6" customClass="DayButton" customModule="Clock_iOS" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YOG-TV-Ju6" customClass="UIDayButton" customModule="Clock_iOS" customModuleProvider="target">
                                         <rect key="frame" x="267" y="0.0" width="53.5" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="S" cornerStyle="fixed">
@@ -261,7 +261,7 @@
                                             <action selector="toggleButtonWithSourceButton:" destination="IeY-iC-XuB" eventType="touchUpInside" id="IBk-QV-CPN"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PYE-Ve-LaZ" customClass="DayButton" customModule="Clock_iOS" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PYE-Ve-LaZ" customClass="UIDayButton" customModule="Clock_iOS" customModuleProvider="target">
                                         <rect key="frame" x="320.5" y="0.0" width="53.5" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="D" cornerStyle="fixed">
@@ -281,6 +281,15 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q4b-dv-ivS">
+                                <rect key="frame" x="143" y="735" width="128.5" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.92133218049999999" green="0.48018896550000001" blue="0.42719079850000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Supprimer"/>
+                                <connections>
+                                    <action selector="deleteClock" destination="IeY-iC-XuB" eventType="touchUpInside" id="jIr-D1-TB9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YMz-3x-I6I"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -312,6 +321,14 @@
                     <connections>
                         <outlet property="clockNameText" destination="Dqe-qM-OcN" id="FL6-cR-srY"/>
                         <outlet property="datePicker" destination="DvO-UZ-RSP" id="IkR-2i-fvC"/>
+                        <outlet property="deleteButton" destination="q4b-dv-ivS" id="0yT-bH-fPp"/>
+                        <outlet property="fridayButton" destination="Acr-VK-bF4" id="TFT-eY-I8X"/>
+                        <outlet property="mondayButton" destination="S3H-1k-JgE" id="b4t-kB-f6i"/>
+                        <outlet property="saturdayButton" destination="YOG-TV-Ju6" id="5tk-Xh-HZ7"/>
+                        <outlet property="sundayButton" destination="PYE-Ve-LaZ" id="44X-nh-zEK"/>
+                        <outlet property="thursdayButton" destination="wfY-Z3-3OS" id="xxo-0D-JQn"/>
+                        <outlet property="tuesdayButton" destination="7gd-nI-gEN" id="Fzi-kI-Wv8"/>
+                        <outlet property="wednesdayButton" destination="Xpm-1t-9tQ" id="cZ7-ma-gHo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fmg-iU-YVc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

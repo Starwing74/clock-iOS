@@ -45,13 +45,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         alarmsTable?.reloadData()   // ...and it is also visible here.
     }
     
-    @IBAction func openAddClock(_ sender: UIBarButtonItem) {
+    func openAddClock(alarm: Alarm?) {
         // Get the storyboard "Main"
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         // Get the ViewController "Clock"
         let clockVC = storyboard.instantiateViewController(identifier: "AddClockViewController") as! AddClockViewController
+        if ((alarm) != nil) { clockVC.editAlarm = alarm }
         // Open it
         self.navigationController?.pushViewController(clockVC, animated: true)
+    }
+    
+    @IBAction func openAddClockButtonClick(_ sender: UIBarButtonItem) {
+        openAddClock(alarm: nil);
     }
 
     /**
@@ -67,8 +72,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
      */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("row: \(indexPath.row)")
-        let cell = tableView.cellForRow(at: indexPath)
-        print(cell.getAlarm)
+        let cell = tableView.cellForRow(at: indexPath) as! AlarmTableViewCell
+        let alarm = cell.alarm!
+        openAddClock(alarm: alarm)
     }
     
     /**
@@ -87,7 +93,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // Update cell values
         let cell = alarmsTable.dequeueReusableCell(withIdentifier: "dummyAlarm", for: indexPath) as! AlarmTableViewCell
-        cell.setAlarm(alarm: alarm) // Create Alarm object from AlarmStruct
+        cell.alarm = alarm // Create Alarm object from AlarmStruct
         cell.setName(name: alarm.name)
         cell.setTime(isoDate: alarm.isoDate)
         cell.setEnabled(enabled: alarm.enabled)
