@@ -46,7 +46,12 @@ class AddClockViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Hide the delete button if we are adding a new alarm
-        if (editAlarm == nil) { deleteButton.isHidden = true }
+        if (editAlarm == nil) {
+            deleteButton.isHidden = true
+        }
+        else {
+            self.title = "Modifier une alarme"
+        }
     }
     
     override func viewDidLoad() {
@@ -140,6 +145,15 @@ class AddClockViewController: UIViewController {
         
         // Go back to the main page
         _ = navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func selectAudio() {
+        // Get the storyboard "Main"
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        // Get the ViewController "Clock"
+        let audioVC = storyboard.instantiateViewController(identifier: "AudioSelectViewController") as! AudioSelectViewController
+        // Open it
+        self.navigationController?.pushViewController(audioVC, animated: true)
     }
 }
 

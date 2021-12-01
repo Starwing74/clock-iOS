@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AlarmTableViewCell: UITableViewCell {
+class UIAlarmTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -42,8 +42,16 @@ class AlarmTableViewCell: UITableViewCell {
         timeLabel.text = dateFormatter.string(from: date)
     }
     
+    private func updateBackground(enabled: Bool) {
+        nameLabel.isEnabled = enabled
+        timeLabel.isEnabled = enabled
+        daysLabel.isEnabled = enabled
+        contentView.backgroundColor = enabled ? UIColor.systemGray5 : UIColor.systemGray4
+    }
+    
     public func setEnabled(enabled: Bool) {
         enabledSwitch.setOn(enabled, animated: true)
+        updateBackground(enabled: enabled)
     }
     
     /**
@@ -64,6 +72,7 @@ class AlarmTableViewCell: UITableViewCell {
     @IBAction func switchChanged() {
         alarm.enabled = enabledSwitch.isOn
         alarm.commit()
+        updateBackground(enabled: enabledSwitch.isOn)
         print("Switch changed")
     }
     

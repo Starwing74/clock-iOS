@@ -38,7 +38,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dummyAlarm" rowHeight="90" id="lvw-lX-z9P" customClass="AlarmTableViewCell" customModule="Clock_iOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dummyAlarm" rowHeight="90" id="lvw-lX-z9P" customClass="UIAlarmTableViewCell" customModule="Clock_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lvw-lX-z9P" id="Ssa-sW-zfz">
@@ -87,10 +87,10 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                         <connections>
-                                            <outlet property="daysLabel" destination="usO-im-VHH" id="H3T-f3-84b"/>
-                                            <outlet property="enabledSwitch" destination="G4B-Td-7ox" id="LyC-Ve-mzL"/>
-                                            <outlet property="nameLabel" destination="56B-up-Uy9" id="Kfp-1l-OiJ"/>
-                                            <outlet property="timeLabel" destination="m7g-7z-OhZ" id="JnT-wB-jUo"/>
+                                            <outlet property="daysLabel" destination="usO-im-VHH" id="eIU-B3-eAJ"/>
+                                            <outlet property="enabledSwitch" destination="G4B-Td-7ox" id="nec-zM-bXV"/>
+                                            <outlet property="nameLabel" destination="56B-up-Uy9" id="APU-pM-UIn"/>
+                                            <outlet property="timeLabel" destination="m7g-7z-OhZ" id="mr7-QZ-6Cc"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -290,6 +290,13 @@
                                     <action selector="deleteClock" destination="IeY-iC-XuB" eventType="touchUpInside" id="jIr-D1-TB9"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ggG-gW-gfB">
+                                <rect key="frame" x="20" y="369" width="374" height="31"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Fichier audio"/>
+                                <connections>
+                                    <action selector="selectAudio" destination="IeY-iC-XuB" eventType="touchUpInside" id="D6r-V0-aWo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YMz-3x-I6I"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -305,7 +312,10 @@
                             <constraint firstItem="wzh-YM-RvM" firstAttribute="centerX" secondItem="E7P-Yd-ibd" secondAttribute="centerX" id="ZpI-oV-O7a"/>
                             <constraint firstItem="OVR-Oi-zb8" firstAttribute="top" secondItem="DvO-UZ-RSP" secondAttribute="bottom" constant="18" id="bTa-0r-RRn"/>
                             <constraint firstItem="wzh-YM-RvM" firstAttribute="top" secondItem="YMz-3x-I6I" secondAttribute="top" constant="5" id="hok-xk-PyD"/>
+                            <constraint firstItem="ggG-gW-gfB" firstAttribute="top" secondItem="9qd-sJ-iXQ" secondAttribute="bottom" constant="8" symbolic="YES" id="jif-PN-jq3"/>
+                            <constraint firstItem="YMz-3x-I6I" firstAttribute="trailing" secondItem="ggG-gW-gfB" secondAttribute="trailing" constant="20" id="nSM-nf-db6"/>
                             <constraint firstItem="9qd-sJ-iXQ" firstAttribute="top" secondItem="Dqe-qM-OcN" secondAttribute="bottom" constant="8" symbolic="YES" id="oCQ-kf-D5j"/>
+                            <constraint firstItem="ggG-gW-gfB" firstAttribute="leading" secondItem="YMz-3x-I6I" secondAttribute="leading" constant="20" id="rFo-Wi-cKs"/>
                             <constraint firstItem="YMz-3x-I6I" firstAttribute="trailing" secondItem="OVR-Oi-zb8" secondAttribute="trailing" constant="20" id="xl0-1V-vRr"/>
                         </constraints>
                     </view>
@@ -334,6 +344,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fmg-iU-YVc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1357.9710144927537" y="-6.0267857142857144"/>
+        </scene>
+        <!--Selectionner un audio-->
+        <scene sceneID="OBW-la-tbv">
+            <objects>
+                <viewController storyboardIdentifier="AudioSelectViewController" title="Selectionner un audio" id="R1D-43-ScI" customClass="AudioSelectViewController" customModule="Clock_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HLg-0H-i1Y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="W9k-q8-HeY">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="trP-gm-v3n"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="W9k-q8-HeY" firstAttribute="top" secondItem="trP-gm-v3n" secondAttribute="top" id="1o6-6V-fHY"/>
+                            <constraint firstItem="W9k-q8-HeY" firstAttribute="trailing" secondItem="trP-gm-v3n" secondAttribute="trailing" id="JbW-O1-CpC"/>
+                            <constraint firstAttribute="bottom" secondItem="W9k-q8-HeY" secondAttribute="bottom" id="UAB-z1-5Ix"/>
+                            <constraint firstItem="W9k-q8-HeY" firstAttribute="leading" secondItem="trP-gm-v3n" secondAttribute="leading" id="dGd-LQ-Z9G"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wqw-3n-9wZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-588.40579710144937" y="-6.0267857142857144"/>
         </scene>
     </scenes>
     <designables>

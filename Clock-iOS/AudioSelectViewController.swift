@@ -6,25 +6,30 @@
 //
 
 import UIKit
+import CoreAudioKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AudioSelectViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet var alarmsTable: UITableView!
-    var alarmIds: [Int] = []
+    @IBOutlet var audiosTable: UITableView!
+    var audios: [Int] = []
     
-    private func getAlarmsIds() {
-        let defaults = UserDefaults.standard
-        let alarmIds = defaults.array(forKey: "alarmIds")  as? [Int] ?? [Int]()
-        self.alarmIds = alarmIds
+    private func getAudios() {
+        if let file = EZAudioFile(url: url) {
+            if let markers = file.markers as? [EZAudioFileMarker] {
+                for m in markers {
+                    Swift.print("NAME: \(m.name) FRAME: \(m.framePosition)")
+                }
+            }
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.alarmsTable?.delegate = self
-        self.alarmsTable?.dataSource = self
+        self.audiosTable?.delegate = self
+        self.audiosTable?.dataSource = self
     
         // Get alarms ids
-        getAlarmsIds()
+        getAudios()
         
         // Request notifications permission
         let  authOption = UNAuthorizationOptions.init(arrayLiteral: .alert, .badge, .sound)
@@ -41,8 +46,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getAlarmsIds()
-        alarmsTable?.reloadData()   // ...and it is also visible here.
+        getAudios()
+        audiosTable?.reloadData()   // ...and it is also visible here.
     }
     
     func openAddClock(alarm: Alarm?) {
@@ -63,8 +68,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
      Tells the TableView how many rows there are
      */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("There are \(alarmIds.count) alarms")
-        return alarmIds.count
+        print("There are \(audios.count) alarms")
+        return audios.count
     }
 
     /**
@@ -82,24 +87,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
      */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("Add call")
-        // Get alarm from defaults
-        let defaults = UserDefaults.standard
-        let alarmId = alarmIds.last
-        _ = alarmIds.popLast()
+
         
-        // Create Alarm object
-        let alarmJSON: String = defaults.string(forKey: "alarm\(alarmId ?? 0)")!
-        let alarm = Alarm(alarmJSON: alarmJSON)
-        
+
         // Update cell values
-        let cell = alarmsTable.dequeueReusableCell(withIdentifier: "dummyAlarm", for: indexPath) as! UIAlarmTableViewCell
-        cell.alarm = alarm // Create Alarm object from AlarmStruct
-        cell.setName(name: alarm.name)
-        cell.setTime(isoDate: alarm.isoDate)
-        cell.setEnabled(enabled: alarm.enabled)
-        cell.setDays(days: alarm.days)
+        let cell = audiosTable.dequeueReusableCell(withIdentifier: "dummyAlarm", for: indexPath) as! UITableViewCell
+
 
         return cell
+        
     }
 }
 
