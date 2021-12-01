@@ -95,36 +95,18 @@ class AddClockViewController: UIViewController {
         present(refreshAlert, animated: true, completion: nil)
     }
     
-    @IBAction func saveClock(_ sender: UIBarButtonItem) {
-        // Get name and time from UI
-        let time: Date = datePicker.date
-        let name: String = clockNameText.text ?? ""
-
-        // Parse time to desired format
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-
-        // Create Alarm object
-        if (editAlarm == nil) {
-            let alarm = Alarm(name: name, isoDate: dateFormatter.string(from: time), enabled: true, days: days)
-            alarm.commit()
-        }
-        else {
-            editAlarm?.name = name
-            editAlarm?.days = days
-            editAlarm?.isoDate = dateFormatter.string(from: time)
-            editAlarm?.enabled = true
-            editAlarm?.commit()
-        }
-        
-        /*
+    private func registerNotification(alarm: Alarm) {
         // Create notification
         // Notification info
         let content = UNMutableNotificationContent()
         content.title = alarm.name
         content.body = "Cliquez ici pour arrêter l'alarme"
-
+        content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "audio/notification.mp3"))
+        
         // Notification date
+        // Parse time to desired format
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         let date = dateFormatter.date(from: alarm.isoDate)!
         let calendar = Calendar.current
         let components = calendar.dateComponents([.day, .month, .year, .hour, .minute, .timeZone], from: date)
@@ -140,7 +122,34 @@ class AddClockViewController: UIViewController {
                 print("error happened")
             }
             print("Notification added")
-        }*/
+        }
+    }
+    
+    @IBAction func saveClock(_ sender: UIBarButtonItem) {
+        // Get name and time from UI
+        let time: Date = datePicker.date
+        let name: String = clockNameText.text ?? ""
+
+        // Parse time to desired format
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+
+        // Create Alarm object
+        if (editAlarm == nil) {
+            let alarm = Alarm(name: name, isoDate: dateFormatter.string(from: time), enabled: true, days: days)
+            alarm.commit()
+            registerNotification(alarm: alarm)
+        }
+        else {
+            editAlarm?.name = name
+            editAlarm?.days = days
+            editAlarm?.isoDate = dateFormatter.string(from: time)
+            editAlarm?.enabled = true
+            editAlarm?.commit()
+            registerNotification(alarm: editAlarm!)
+        }
+        
+        
         print("Alarm added")
         
         // Go back to the main page
@@ -149,11 +158,11 @@ class AddClockViewController: UIViewController {
     
     @IBAction func selectAudio() {
         // Get the storyboard "Main"
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        // let storyboard = UIStoryboard(name: "Main", bundle: nil)
         // Get the ViewController "Clock"
-        let audioVC = storyboard.instantiateViewController(identifier: "AudioSelectViewController") as! AudioSelectViewController
+        // let audioVC = storyboard.instantiateViewController(identifier: "AudioSelectViewController") as! AudioSelectViewController
         // Open it
-        self.navigationController?.pushViewController(audioVC, animated: true)
+        // self.navigationController?.pushViewController(audioVC, animated: true)
     }
 }
 

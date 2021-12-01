@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="P9c-zz-H8J">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="41n-d6-Bj3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -24,12 +24,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cvu-RK-hqY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2896" y="-6"/>
+            <point key="canvasLocation" x="-3061" y="-25"/>
         </scene>
         <!--Alarme-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Clock_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ListViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="Clock_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R2D-s0-y2h">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -110,6 +110,7 @@
                             <color key="tintColor" systemColor="systemOrangeColor"/>
                             <connections>
                                 <action selector="openAddClockButtonClick:" destination="BYZ-38-t0r" id="dT0-hI-qqJ"/>
+                                <segue destination="IeY-iC-XuB" kind="show" id="6aV-gh-TUj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -120,7 +121,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2120.289855072464" y="-6.0267857142857144"/>
+            <point key="canvasLocation" x="-2303" y="-25"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="uQS-TA-sO5">
+            <objects>
+                <pageViewController storyboardIdentifier="TimeViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="NxU-bw-dgL" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="df8-Oq-Hkb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1558" y="-25"/>
+        </scene>
+        <!--Main Page View Controller-->
+        <scene sceneID="C64-kx-ovk">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="41n-d6-Bj3" customClass="UIMainPageViewController" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3VD-02-qES" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3972" y="-25"/>
         </scene>
         <!--Add Clock View Controller-->
         <scene sceneID="X6k-Nt-fdj">
@@ -295,6 +312,7 @@
                                 <buttonConfiguration key="configuration" style="tinted" title="Fichier audio"/>
                                 <connections>
                                     <action selector="selectAudio" destination="IeY-iC-XuB" eventType="touchUpInside" id="D6r-V0-aWo"/>
+                                    <segue destination="R1D-43-ScI" kind="show" id="xxE-l3-xEO"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -343,7 +361,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fmg-iU-YVc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1357.9710144927537" y="-6.0267857142857144"/>
+            <point key="canvasLocation" x="-1772" y="-696"/>
         </scene>
         <!--Selectionner un audio-->
         <scene sceneID="OBW-la-tbv">
@@ -367,11 +385,12 @@
                             <constraint firstItem="W9k-q8-HeY" firstAttribute="leading" secondItem="trP-gm-v3n" secondAttribute="leading" id="dGd-LQ-Z9G"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="MZW-WT-98Y"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wqw-3n-9wZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-588.40579710144937" y="-6.0267857142857144"/>
+            <point key="canvasLocation" x="-1025" y="-696"/>
         </scene>
     </scenes>
     <designables>

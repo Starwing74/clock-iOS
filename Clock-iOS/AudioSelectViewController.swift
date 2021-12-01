@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreAudioKit
 
 class AudioSelectViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -14,13 +13,7 @@ class AudioSelectViewController: UIViewController, UITableViewDelegate, UITableV
     var audios: [Int] = []
     
     private func getAudios() {
-        if let file = EZAudioFile(url: url) {
-            if let markers = file.markers as? [EZAudioFileMarker] {
-                for m in markers {
-                    Swift.print("NAME: \(m.name) FRAME: \(m.framePosition)")
-                }
-            }
-        }
+        
     }
     
     override func viewDidLoad() {
@@ -91,7 +84,7 @@ class AudioSelectViewController: UIViewController, UITableViewDelegate, UITableV
         
 
         // Update cell values
-        let cell = audiosTable.dequeueReusableCell(withIdentifier: "dummyAlarm", for: indexPath) as! UITableViewCell
+        let cell = audiosTable.dequeueReusableCell(withIdentifier: "dummyAlarm", for: indexPath)
 
 
         return cell
