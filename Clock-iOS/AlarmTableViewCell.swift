@@ -15,18 +15,30 @@ class AlarmTableViewCell: UITableViewCell {
     @IBOutlet weak var enabledSwitch: UISwitch!
     private var alarm: Alarm!
 
+    /**
+     This is used to pass the data from the Alarm
+     */
     public func setAlarm(alarm: Alarm) {
         self.alarm = alarm
     }
     
+    /**
+     Set weither the alarm is selected or not
+     */
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
 
+    /**
+     Set the name of the alarm
+     */
     public func setName(name: String) {
         nameLabel.text = name
     }
 
+    /**
+     Set the time of the alarm from an ISO date
+     */
     public func setTime(isoDate: String) {
         let dateFormatter = DateFormatter()
         // Parse date
@@ -41,18 +53,21 @@ class AlarmTableViewCell: UITableViewCell {
         enabledSwitch.setOn(enabled, animated: true)
     }
     
-    private func coloredText(text: String) {
-        
-    }
-    
+    /**
+     Sets the color of daysLabel according to the days array
+     */
     public func setDays(days: [Bool]) {
         // UIFont font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.thin)
-        let myMutableString = NSMutableAttributedString(string: "Bonjour")
-        myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red, range: NSRange(location:2,length:4))
-        // set label Attribute
-        daysLabel.attributedText = myMutableString
+        let daysString = NSMutableAttributedString(string: daysLabel.text!)
+        for (i, dayEnabled) in days.enumerated() {
+            daysString.addAttribute(NSAttributedString.Key.foregroundColor, value: dayEnabled ? UIColor.systemBlue : UIColor.gray, range: NSRange(location: i * 2, length: 1))
+        }
+        daysLabel.attributedText = daysString
     }
     
+    /**
+     Toggle and save the state of the alarm when the toggled button changes
+     */
     @IBAction func switchChanged() {
         alarm.enabled = enabledSwitch.isOn
         alarm.commit()

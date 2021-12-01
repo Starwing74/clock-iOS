@@ -46,7 +46,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dummy Alarm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56B-up-Uy9">
-                                                    <rect key="frame" x="20" y="11" width="374" height="21"/>
+                                                    <rect key="frame" x="20" y="11" width="107.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -73,15 +73,16 @@
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemGray5Color"/>
                                             <constraints>
-                                                <constraint firstItem="G4B-Td-7ox" firstAttribute="leading" secondItem="usO-im-VHH" secondAttribute="trailing" constant="12" id="JsE-3a-6r7"/>
-                                                <constraint firstItem="usO-im-VHH" firstAttribute="centerY" secondItem="Ssa-sW-zfz" secondAttribute="centerY" id="SuQ-OP-QCw"/>
-                                                <constraint firstItem="G4B-Td-7ox" firstAttribute="trailing" secondItem="Ssa-sW-zfz" secondAttribute="trailingMargin" id="Sx4-8F-hez"/>
-                                                <constraint firstItem="56B-up-Uy9" firstAttribute="leading" secondItem="Ssa-sW-zfz" secondAttribute="leadingMargin" id="Uhw-JL-zCv"/>
-                                                <constraint firstItem="56B-up-Uy9" firstAttribute="top" secondItem="Ssa-sW-zfz" secondAttribute="topMargin" id="YGS-JX-Wgh"/>
-                                                <constraint firstItem="m7g-7z-OhZ" firstAttribute="leading" secondItem="Ssa-sW-zfz" secondAttribute="leading" constant="20" symbolic="YES" id="Yeo-lT-b5L"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="56B-up-Uy9" secondAttribute="trailing" id="g6Z-R7-x42"/>
-                                                <constraint firstAttribute="bottom" secondItem="m7g-7z-OhZ" secondAttribute="bottom" constant="7" id="kce-3p-dnA"/>
-                                                <constraint firstItem="G4B-Td-7ox" firstAttribute="centerY" secondItem="Ssa-sW-zfz" secondAttribute="centerY" id="pRS-lq-0oX"/>
+                                                <constraint firstItem="G4B-Td-7ox" firstAttribute="trailing" secondItem="Ssa-sW-zfz" secondAttribute="trailingMargin" id="3zF-U1-LRl"/>
+                                                <constraint firstItem="m7g-7z-OhZ" firstAttribute="top" secondItem="Ssa-sW-zfz" secondAttribute="top" constant="29" id="GlG-bc-LxP"/>
+                                                <constraint firstItem="56B-up-Uy9" firstAttribute="top" secondItem="Ssa-sW-zfz" secondAttribute="topMargin" id="L2n-sM-B7g"/>
+                                                <constraint firstItem="G4B-Td-7ox" firstAttribute="leading" secondItem="usO-im-VHH" secondAttribute="trailing" constant="12" id="MVS-LI-kCc"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="56B-up-Uy9" secondAttribute="bottom" constant="47" id="ZLH-0y-JGt"/>
+                                                <constraint firstAttribute="bottom" secondItem="m7g-7z-OhZ" secondAttribute="bottom" constant="7" id="dps-2H-thK"/>
+                                                <constraint firstItem="G4B-Td-7ox" firstAttribute="centerY" secondItem="Ssa-sW-zfz" secondAttribute="centerY" id="pCK-md-cQf"/>
+                                                <constraint firstItem="usO-im-VHH" firstAttribute="centerY" secondItem="Ssa-sW-zfz" secondAttribute="centerY" id="plN-ac-cLw"/>
+                                                <constraint firstItem="56B-up-Uy9" firstAttribute="leading" secondItem="Ssa-sW-zfz" secondAttribute="leadingMargin" id="uR4-4M-sQ0"/>
+                                                <constraint firstItem="m7g-7z-OhZ" firstAttribute="leading" secondItem="Ssa-sW-zfz" secondAttribute="leading" constant="20" symbolic="YES" id="w2y-sa-BaG"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="systemOrangeColor"/>

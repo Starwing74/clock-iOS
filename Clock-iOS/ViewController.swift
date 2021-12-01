@@ -12,28 +12,39 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet var alarmsTable: UITableView!
     var alarmIds: [Int] = []
     
+    private func getAlarmsIds() {
+        let defaults = UserDefaults.standard
+        let alarmIds = defaults.array(forKey: "alarmIds")  as? [Int] ?? [Int]()
+        self.alarmIds = alarmIds
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.alarmsTable?.delegate = self
         self.alarmsTable?.dataSource = self
+    
+        // Get alarms ids
+        getAlarmsIds()
         
-        print("init call")
-        let defaults = UserDefaults.standard
-        let alarmIds = defaults.array(forKey: "alarmIds")  as? [Int] ?? [Int]()
-        self.alarmIds = alarmIds
-        
+        // Request notifications permission
         let  authOption = UNAuthorizationOptions.init(arrayLiteral: .alert, .badge, .sound)
-        
         UNUserNotificationCenter.current().requestAuthorization(options: authOption) { (success, error) in
             if let error = error {
                 print("Error:", error)
             }
         }
         
+        // Used to clear the alarms for debugging purpose
         /*defaults.set(0, forKey: "idCounter")
         defaults.set([], forKey: "alarmIds")*/
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getAlarmsIds()
+        alarmsTable?.reloadData()   // ...and it is also visible here.
+    }
+    
     @IBAction func openAddClock(_ sender: UIBarButtonItem) {
         // Get the storyboard "Main"
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -43,11 +54,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.navigationController?.pushViewController(clockVC, animated: true)
     }
 
+    /**
+     Tells the TableView how many rows there are
+     */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("There are \(alarmIds.count) alarms")
         return alarmIds.count
     }
 
+    /**
+     On row clicked
+     */
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("row: \(indexPath.row)")
+        let cell = tableView.cellForRow(at: indexPath)
+        print(cell.getAlarm)
+    }
+    
+    /**
+     Populates the TableView with the data from the alarms
+     */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("Add call")
         // Get alarm from defaults
@@ -57,9 +83,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // Create Alarm object
         let alarmJSON: String = defaults.string(forKey: "alarm\(alarmId ?? 0)")!
-        print(alarmJSON)
         let alarm = Alarm(alarmJSON: alarmJSON)
-        print(alarm.days)
         
         // Update cell values
         let cell = alarmsTable.dequeueReusableCell(withIdentifier: "dummyAlarm", for: indexPath) as! AlarmTableViewCell
@@ -68,9 +92,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.setTime(isoDate: alarm.isoDate)
         cell.setEnabled(enabled: alarm.enabled)
         cell.setDays(days: alarm.days)
-        
+
         return cell
     }
-
 }
 

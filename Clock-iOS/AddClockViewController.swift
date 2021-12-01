@@ -75,6 +75,9 @@ class AddClockViewController: UIViewController {
             print("Notification added")
         }
         print("Alarm added")
+        
+        // Go back to the main page
+        _ = navigationController?.popViewController(animated: true)
     }
 }
 
