@@ -17,6 +17,7 @@
 		2A9857B1274632B300D4B53C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A9857AF274632B300D4B53C /* LaunchScreen.storyboard */; };
 		2A9857BC274632B400D4B53C /* Clock_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9857BB274632B400D4B53C /* Clock_iOSTests.swift */; };
 		2A9857C7274632B400D4B53C /* Clock_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9857C6274632B400D4B53C /* Clock_iOSUITests.swift */; };
+		2A9D93C5275762CF00849F82 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9D93C4275762CF00849F82 /* Alarm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		2A9857C2274632B400D4B53C /* Clock-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Clock-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A9857C6274632B400D4B53C /* Clock_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock_iOSUITests.swift; sourceTree = "<group>"; };
 		2A9857C8274632B400D4B53C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A9D93C4275762CF00849F82 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				2A9857AF274632B300D4B53C /* LaunchScreen.storyboard */,
 				2A9857B2274632B300D4B53C /* Info.plist */,
 				2A0642E6274682090079859D /* AlarmTableViewCell.swift */,
+				2A9D93C4275762CF00849F82 /* Alarm.swift */,
 			);
 			path = "Clock-iOS";
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				2A0642E5274642E60079859D /* AddClockViewController.swift in Sources */,
 				2A9857A5274632B100D4B53C /* AppDelegate.swift in Sources */,
 				2A9857A7274632B100D4B53C /* SceneDelegate.swift in Sources */,
+				2A9D93C5275762CF00849F82 /* Alarm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

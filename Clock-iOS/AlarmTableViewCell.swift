@@ -14,12 +14,8 @@ class AlarmTableViewCell: UITableViewCell {
     @IBOutlet weak var daysLabel: UILabel!
     @IBOutlet weak var enabledSwitch: UISwitch!
     private var alarm: Alarm!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
 
-    func setAlarm(alarm: Alarm) {
+    public func setAlarm(alarm: Alarm) {
         self.alarm = alarm
     }
     
@@ -27,11 +23,11 @@ class AlarmTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
-    func setName(name: String) {
+    public func setName(name: String) {
         nameLabel.text = name
     }
 
-    func setTime(isoDate: String) {
+    public func setTime(isoDate: String) {
         let dateFormatter = DateFormatter()
         // Parse date
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ";
@@ -41,12 +37,25 @@ class AlarmTableViewCell: UITableViewCell {
         timeLabel.text = dateFormatter.string(from: date)
     }
     
-    func setEnabled(enabled: Bool) {
+    public func setEnabled(enabled: Bool) {
         enabledSwitch.setOn(enabled, animated: true)
+    }
+    
+    private func coloredText(text: String) {
+        
+    }
+    
+    public func setDays(days: [Bool]) {
+        // UIFont font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.thin)
+        let myMutableString = NSMutableAttributedString(string: "Bonjour")
+        myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red, range: NSRange(location:2,length:4))
+        // set label Attribute
+        daysLabel.attributedText = myMutableString
     }
     
     @IBAction func switchChanged() {
         alarm.enabled = enabledSwitch.isOn
+        alarm.commit()
         print("Switch changed")
     }
     

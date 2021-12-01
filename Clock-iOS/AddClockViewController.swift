@@ -7,11 +7,32 @@
 
 import UIKit
 
+/*
+ Custom button type for days
+ It's a toggle button with a number corresponding to its day (0 to 6)
+ */
+@IBDesignable class DayButton: UIButton {
+    @IBInspectable public var day: Int = 0
+    public var isToggled = false
+}
+
 class AddClockViewController: UIViewController {
 
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var clockNameText: UITextField!
-
+    var days = [Bool](repeating: false, count: 7)
+    
+    /*
+     Called on "DayButton" click, toggle the button and change the days array state
+     */
+    @IBAction func toggleButton(sourceButton: DayButton) {
+        sourceButton.isToggled = !sourceButton.isToggled
+        let toggled = sourceButton.isToggled
+        sourceButton.backgroundColor = toggled ? UIColor.systemBlue : UIColor.white
+        sourceButton.setTitleColor(toggled ? UIColor.white : UIColor.systemBlue, for: .normal)
+        days[sourceButton.day] = toggled
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -26,8 +47,9 @@ class AddClockViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ";
 
-        // Create JSON from data
-        let alarm = Alarm(name: name, isoDate: dateFormatter.string(from: time), enabled: true)
+        // Create Alarm object
+        let alarm = Alarm(name: name, isoDate: dateFormatter.string(from: time), enabled: true, days: days)
+        alarm.commit()
         
         // Create notification
         // Notification info
