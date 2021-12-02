@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let content = UNMutableNotificationContent()
         content.title = "test"
         content.body = "test"
-        content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "notification.mp3"))
+        content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: ""))
         
         // Notification trigger
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)

@@ -10,22 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="vFl-5V-H0Y">
-            <objects>
-                <navigationController id="P9c-zz-H8J" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HvA-PD-A5w">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="qEv-TT-YnA"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Cvu-RK-hqY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3061" y="-25"/>
-        </scene>
         <!--Alarme-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -123,21 +107,28 @@
             </objects>
             <point key="canvasLocation" x="-2303" y="-25"/>
         </scene>
-        <!--Page View Controller-->
-        <scene sceneID="uQS-TA-sO5">
+        <!--Time View Controller-->
+        <scene sceneID="5ag-jY-bjP">
             <objects>
-                <pageViewController storyboardIdentifier="TimeViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="NxU-bw-dgL" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="df8-Oq-Hkb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="TimeViewController" id="7M6-na-Cm6" customClass="TimeViewController" customModule="Clock_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bQc-dd-1f5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="gOR-lA-WWu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XxF-1f-XS8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1558" y="-25"/>
+            <point key="canvasLocation" x="-1471" y="-25"/>
         </scene>
         <!--Main Page View Controller-->
         <scene sceneID="C64-kx-ovk">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="41n-d6-Bj3" customClass="UIMainPageViewController" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="41n-d6-Bj3" customClass="UIMainPageViewController" customModule="Clock_iOS" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3VD-02-qES" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3972" y="-25"/>
+            <point key="canvasLocation" x="-3122" y="-25"/>
         </scene>
         <!--Add Clock View Controller-->
         <scene sceneID="X6k-Nt-fdj">
