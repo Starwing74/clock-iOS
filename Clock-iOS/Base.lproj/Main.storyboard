@@ -132,12 +132,12 @@
             </objects>
             <point key="canvasLocation" x="-3858" y="-25"/>
         </scene>
-        <!--Main Page View Controller-->
+        <!--Alarme-->
         <scene sceneID="C64-kx-ovk">
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="none" id="41n-d6-Bj3" customClass="UIMainPageViewController" customModule="Clock_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" id="nNo-Xy-irO">
+                    <navigationItem key="navigationItem" title="Alarme" id="nNo-Xy-irO">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="nsr-px-U6k">
                             <color key="tintColor" systemColor="systemOrangeColor"/>
                             <connections>

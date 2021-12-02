@@ -40,7 +40,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     print("Error: Cannot convert data to JSON object")
                     return
                 }
-                guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
+                
+                print(jsonObject["data"])
+                
+                /*guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
                     print("Error: Cannot convert JSON object to Pretty JSON data")
                     return
                 }
@@ -49,7 +52,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     return
                 }
                 
-                print(prettyPrintedJson)
+                print(prettyPrintedJson)*/
             } catch {
                 print("Error: Trying to convert JSON data to string")
                 return
