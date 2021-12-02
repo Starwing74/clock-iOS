@@ -10,17 +10,18 @@
 		2A0642E5274642E60079859D /* AddClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0642E4274642E60079859D /* AddClockViewController.swift */; };
 		2A0642E7274682090079859D /* UIAlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0642E6274682090079859D /* UIAlarmTableViewCell.swift */; };
 		2A0FEB1F2758BD1100C2C269 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0FEB1E2758BD1100C2C269 /* APIManager.swift */; };
+		2A0FEB252758CBCD00C2C269 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0FEB242758CBCD00C2C269 /* Time.swift */; };
+		2A0FEB2B2758D06800C2C269 /* UITimeZoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0FEB292758D04500C2C269 /* UITimeZoneTableViewCell.swift */; };
+		2A0FEB2D2758D0A700C2C269 /* UIDayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0FEB2C2758D0A700C2C269 /* UIDayButton.swift */; };
 		2A672869275789CC009B09D9 /* AudioSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A672868275789CC009B09D9 /* AudioSelectViewController.swift */; };
 		2A67286F2757C5E2009B09D9 /* UIMainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A67286E2757C5E2009B09D9 /* UIMainPageViewController.swift */; };
-		2A6728712757CAE9009B09D9 /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6728702757CAE9009B09D9 /* TimeViewController.swift */; };
+		2A6728712757CAE9009B09D9 /* TimeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6728702757CAE9009B09D9 /* TimeListViewController.swift */; };
 		2A9857A5274632B100D4B53C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9857A4274632B100D4B53C /* AppDelegate.swift */; };
 		2A9857A7274632B100D4B53C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9857A6274632B100D4B53C /* SceneDelegate.swift */; };
-		2A9857A9274632B100D4B53C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9857A8274632B100D4B53C /* ViewController.swift */; };
+		2A9857A9274632B100D4B53C /* AlarmListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9857A8274632B100D4B53C /* AlarmListViewController.swift */; };
 		2A9857AC274632B100D4B53C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A9857AA274632B100D4B53C /* Main.storyboard */; };
 		2A9857AE274632B300D4B53C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A9857AD274632B300D4B53C /* Assets.xcassets */; };
 		2A9857B1274632B300D4B53C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A9857AF274632B300D4B53C /* LaunchScreen.storyboard */; };
-		2A9857BC274632B400D4B53C /* Clock_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9857BB274632B400D4B53C /* Clock_iOSTests.swift */; };
-		2A9857C7274632B400D4B53C /* Clock_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9857C6274632B400D4B53C /* Clock_iOSUITests.swift */; };
 		2A9D93C5275762CF00849F82 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9D93C4275762CF00849F82 /* Alarm.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,24 +46,23 @@
 		2A0642E4274642E60079859D /* AddClockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClockViewController.swift; sourceTree = "<group>"; };
 		2A0642E6274682090079859D /* UIAlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlarmTableViewCell.swift; sourceTree = "<group>"; };
 		2A0FEB1E2758BD1100C2C269 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		2A0FEB242758CBCD00C2C269 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		2A0FEB292758D04500C2C269 /* UITimeZoneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITimeZoneTableViewCell.swift; sourceTree = "<group>"; };
+		2A0FEB2C2758D0A700C2C269 /* UIDayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDayButton.swift; sourceTree = "<group>"; };
 		2A672868275789CC009B09D9 /* AudioSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSelectViewController.swift; sourceTree = "<group>"; };
 		2A67286D2757B0B3009B09D9 /* notification.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = notification.mp3; sourceTree = "<group>"; };
 		2A67286E2757C5E2009B09D9 /* UIMainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMainPageViewController.swift; sourceTree = "<group>"; };
-		2A6728702757CAE9009B09D9 /* TimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
+		2A6728702757CAE9009B09D9 /* TimeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeListViewController.swift; sourceTree = "<group>"; };
 		2A9857A1274632B100D4B53C /* Clock-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Clock-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A9857A4274632B100D4B53C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A9857A6274632B100D4B53C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2A9857A8274632B100D4B53C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2A9857A8274632B100D4B53C /* AlarmListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmListViewController.swift; sourceTree = "<group>"; };
 		2A9857AB274632B100D4B53C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2A9857AD274632B300D4B53C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A9857B0274632B300D4B53C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A9857B2274632B300D4B53C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A9857B7274632B400D4B53C /* Clock-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Clock-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2A9857BB274632B400D4B53C /* Clock_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock_iOSTests.swift; sourceTree = "<group>"; };
-		2A9857BD274632B400D4B53C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A9857C2274632B400D4B53C /* Clock-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Clock-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2A9857C6274632B400D4B53C /* Clock_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock_iOSUITests.swift; sourceTree = "<group>"; };
-		2A9857C8274632B400D4B53C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A9D93C4275762CF00849F82 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +91,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A0FEB202758C4A500C2C269 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				2A0FEB1E2758BD1100C2C269 /* APIManager.swift */,
+				2A9D93C4275762CF00849F82 /* Alarm.swift */,
+				2A0FEB242758CBCD00C2C269 /* Time.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		2A0FEB212758C4B800C2C269 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2A67286E2757C5E2009B09D9 /* UIMainPageViewController.swift */,
+				2A9857A8274632B100D4B53C /* AlarmListViewController.swift */,
+				2A6728702757CAE9009B09D9 /* TimeListViewController.swift */,
+				2A0642E4274642E60079859D /* AddClockViewController.swift */,
+				2A672868275789CC009B09D9 /* AudioSelectViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		2A0FEB282758D03F00C2C269 /* CustomTypes */ = {
+			isa = PBXGroup;
+			children = (
+				2A0FEB292758D04500C2C269 /* UITimeZoneTableViewCell.swift */,
+				2A0642E6274682090079859D /* UIAlarmTableViewCell.swift */,
+				2A0FEB2C2758D0A700C2C269 /* UIDayButton.swift */,
+			);
+			path = CustomTypes;
+			sourceTree = "<group>";
+		};
 		2A67286A2757ADB7009B09D9 /* audio */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,8 +135,6 @@
 			isa = PBXGroup;
 			children = (
 				2A9857A3274632B100D4B53C /* Clock-iOS */,
-				2A9857BA274632B400D4B53C /* Clock-iOSTests */,
-				2A9857C5274632B400D4B53C /* Clock-iOSUITests */,
 				2A9857A2274632B100D4B53C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -122,41 +152,18 @@
 		2A9857A3274632B100D4B53C /* Clock-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				2A0FEB1E2758BD1100C2C269 /* APIManager.swift */,
-				2A67286A2757ADB7009B09D9 /* audio */,
+				2A0FEB282758D03F00C2C269 /* CustomTypes */,
 				2A9857A4274632B100D4B53C /* AppDelegate.swift */,
 				2A9857A6274632B100D4B53C /* SceneDelegate.swift */,
+				2A67286A2757ADB7009B09D9 /* audio */,
+				2A0FEB202758C4A500C2C269 /* Util */,
+				2A0FEB212758C4B800C2C269 /* ViewControllers */,
 				2A9857AA274632B100D4B53C /* Main.storyboard */,
 				2A9857AF274632B300D4B53C /* LaunchScreen.storyboard */,
-				2A9857AD274632B300D4B53C /* Assets.xcassets */,
-				2A9857A8274632B100D4B53C /* ViewController.swift */,
-				2A67286E2757C5E2009B09D9 /* UIMainPageViewController.swift */,
-				2A0642E4274642E60079859D /* AddClockViewController.swift */,
-				2A0642E6274682090079859D /* UIAlarmTableViewCell.swift */,
-				2A672868275789CC009B09D9 /* AudioSelectViewController.swift */,
-				2A6728702757CAE9009B09D9 /* TimeViewController.swift */,
 				2A9857B2274632B300D4B53C /* Info.plist */,
-				2A9D93C4275762CF00849F82 /* Alarm.swift */,
+				2A9857AD274632B300D4B53C /* Assets.xcassets */,
 			);
 			path = "Clock-iOS";
-			sourceTree = "<group>";
-		};
-		2A9857BA274632B400D4B53C /* Clock-iOSTests */ = {
-			isa = PBXGroup;
-			children = (
-				2A9857BB274632B400D4B53C /* Clock_iOSTests.swift */,
-				2A9857BD274632B400D4B53C /* Info.plist */,
-			);
-			path = "Clock-iOSTests";
-			sourceTree = "<group>";
-		};
-		2A9857C5274632B400D4B53C /* Clock-iOSUITests */ = {
-			isa = PBXGroup;
-			children = (
-				2A9857C6274632B400D4B53C /* Clock_iOSUITests.swift */,
-				2A9857C8274632B400D4B53C /* Info.plist */,
-			);
-			path = "Clock-iOSUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,13 +296,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A0FEB2B2758D06800C2C269 /* UITimeZoneTableViewCell.swift in Sources */,
+				2A0FEB252758CBCD00C2C269 /* Time.swift in Sources */,
 				2A0642E7274682090079859D /* UIAlarmTableViewCell.swift in Sources */,
-				2A9857A9274632B100D4B53C /* ViewController.swift in Sources */,
+				2A9857A9274632B100D4B53C /* AlarmListViewController.swift in Sources */,
 				2A0FEB1F2758BD1100C2C269 /* APIManager.swift in Sources */,
 				2A0642E5274642E60079859D /* AddClockViewController.swift in Sources */,
 				2A9857A5274632B100D4B53C /* AppDelegate.swift in Sources */,
 				2A9857A7274632B100D4B53C /* SceneDelegate.swift in Sources */,
-				2A6728712757CAE9009B09D9 /* TimeViewController.swift in Sources */,
+				2A0FEB2D2758D0A700C2C269 /* UIDayButton.swift in Sources */,
+				2A6728712757CAE9009B09D9 /* TimeListViewController.swift in Sources */,
 				2A672869275789CC009B09D9 /* AudioSelectViewController.swift in Sources */,
 				2A9D93C5275762CF00849F82 /* Alarm.swift in Sources */,
 				2A67286F2757C5E2009B09D9 /* UIMainPageViewController.swift in Sources */,
@@ -306,7 +316,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A9857BC274632B400D4B53C /* Clock_iOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,7 +323,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A9857C7274632B400D4B53C /* Clock_iOSUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

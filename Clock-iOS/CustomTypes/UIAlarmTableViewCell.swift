@@ -10,9 +10,9 @@ import UIKit
 class UIAlarmTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var nameLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var daysLabel: UILabel!
-    @IBOutlet weak var enabledSwitch: UISwitch!
+    @IBOutlet private weak var timeLabel: UILabel!
+    @IBOutlet private weak var daysLabel: UILabel!
+    @IBOutlet private weak var enabledSwitch: UISwitch!
     public var alarm: Alarm!
     
     /**

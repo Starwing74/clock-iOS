@@ -13,55 +13,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // https://maps.googleapis.com/maps/api/timezone/json?key=AIzaSyDYC2snvmp61Ebi0NJ0R_iNfkhT4a2Qs0w&location=45.188529,5.724524&timestamp=1331161200
     // https://timezoneapi.io/api/timezone/?token=aATMXSVPZzMftdgmAmDu&Europe/Paris
     
-    func getMethod() {
-        guard let url = URL(string: "https://timezoneapi.io/api/timezone/?token=aATMXSVPZzMftdgmAmDu&Europe/Paris") else {
-            print("Error: cannot create URL")
-            return
-        }
-        // Create the url request
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            guard error == nil else {
-                print("Error: error calling GET")
-                print(error!)
-                return
-            }
-            guard let data = data else {
-                print("Error: Did not receive data")
-                return
-            }
-            guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
-                print("Error: HTTP request failed")
-                return
-            }
-            do {
-                guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
-                    print("Error: Cannot convert data to JSON object")
-                    return
-                }
-                
-                print(jsonObject["data"])
-                
-                /*guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
-                    print("Error: Cannot convert JSON object to Pretty JSON data")
-                    return
-                }
-                guard let prettyPrintedJson = String(data: prettyJsonData, encoding: .utf8) else {
-                    print("Error: Could print JSON in String")
-                    return
-                }
-                
-                print(prettyPrintedJson)*/
-            } catch {
-                print("Error: Trying to convert JSON data to string")
-                return
-            }
-        }.resume()
-    }
-    
-    @IBOutlet var alarmsTable: UITableView!
-    var alarmIds: [Int] = []
+    @IBOutlet private weak var alarmsTable: UITableView!
+    private var alarmIds: [Int] = []
     
     private func getAlarmsIds() {
         let defaults = UserDefaults.standard
@@ -76,20 +29,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
         // Get alarms ids
         getAlarmsIds()
-        
-        // Request notifications permission
-        let  authOption = UNAuthorizationOptions.init(arrayLiteral: .alert, .badge, .sound)
-        UNUserNotificationCenter.current().requestAuthorization(options: authOption) { (success, error) in
-            if let error = error {
-                print("Error:", error)
-            }
-        }
-        
-        getMethod()
-        
-        // Used to clear the alarms for debugging purpose
-        /*defaults.set(0, forKey: "idCounter")
-        defaults.set([], forKey: "alarmIds")*/
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -134,7 +73,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
      Populates the TableView with the data from the alarms
      */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("Add call")
+        print("Addding alarm to the TableView")
         // Get alarm from defaults
         let defaults = UserDefaults.standard
         let alarmId = alarmIds.last

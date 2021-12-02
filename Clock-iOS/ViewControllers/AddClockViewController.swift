@@ -7,29 +7,20 @@
 
 import UIKit
 
-/*
- Custom button type for days
- It's a toggle button with a number corresponding to its day (0 to 6)
- */
-@IBDesignable class UIDayButton: UIButton {
-    @IBInspectable public var day: Int = 0
-    public var isToggled = false
-}
-
 class AddClockViewController: UIViewController {
 
-    @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var clockNameText: UITextField!
-    @IBOutlet weak var mondayButton: UIDayButton!
-    @IBOutlet weak var tuesdayButton: UIDayButton!
-    @IBOutlet weak var wednesdayButton: UIDayButton!
-    @IBOutlet weak var thursdayButton: UIDayButton!
-    @IBOutlet weak var fridayButton: UIDayButton!
-    @IBOutlet weak var saturdayButton: UIDayButton!
-    @IBOutlet weak var sundayButton: UIDayButton!
-    @IBOutlet weak var deleteButton: UIButton!
-    var days = [Bool](repeating: false, count: 7)
-    var editAlarm : Alarm?
+    @IBOutlet private weak var datePicker: UIDatePicker!
+    @IBOutlet private weak var clockNameText: UITextField!
+    @IBOutlet private weak var mondayButton: UIDayButton!
+    @IBOutlet private weak var tuesdayButton: UIDayButton!
+    @IBOutlet private weak var wednesdayButton: UIDayButton!
+    @IBOutlet private weak var thursdayButton: UIDayButton!
+    @IBOutlet private weak var fridayButton: UIDayButton!
+    @IBOutlet private weak var saturdayButton: UIDayButton!
+    @IBOutlet private weak var sundayButton: UIDayButton!
+    @IBOutlet private weak var deleteButton: UIButton!
+    private var days = [Bool](repeating: false, count: 7)
+    public var editAlarm : Alarm?
     
     /*
      Called on "DayButton" click, toggle the button and change the days array state

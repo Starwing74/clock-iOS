@@ -14,7 +14,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // Request notifications permission
+        let  authOption = UNAuthorizationOptions.init(arrayLiteral: .alert, .badge, .sound)
+        UNUserNotificationCenter.current().requestAuthorization(options: authOption) { (success, error) in
+            if let error = error {
+                print("Error:", error)
+            }
+        }
+        
+        // Used to clear the alarms for debugging purpose
+        /*let defaults = UserDefaults.standard
+        defaults.set(0, forKey: "idCounter")
+        defaults.set([], forKey: "timeIds")*/
+        
         return true
     }
 
@@ -31,58 +43,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
-        // Print full message.
-        print("notif")
-
-        // Create notification
-        // Notification info
-        let content = UNMutableNotificationContent()
-        content.title = "test"
-        content.body = "test"
-
-        // Notification trigger
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        let notificationID = UUID().uuidString
-        let request = UNNotificationRequest(identifier: notificationID, content: content, trigger: trigger)
-        let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.add(request) { (error) in
-          if (error != nil) {
-              print(error ?? "no error")
-              print("error happened")
-          }
-          print("Notification added again")
-        }
-
-    }
-
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-
-        // Print full message.
-        print("notif")
-
-        // Create notification
-        // Notification info
-        let content = UNMutableNotificationContent()
-        content.title = "test"
-        content.body = "test"
-        content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: ""))
-        
-        // Notification trigger
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        let notificationID = UUID().uuidString
-        let request = UNNotificationRequest(identifier: notificationID, content: content, trigger: trigger)
-        let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.add(request) { (error) in
-        if (error != nil) {
-            print(error ?? "no error")
-            print("error happened")
-        }
-        print("Notification added again")
-        }
-
-        completionHandler(UIBackgroundFetchResult.newData)
-        }
 }
 

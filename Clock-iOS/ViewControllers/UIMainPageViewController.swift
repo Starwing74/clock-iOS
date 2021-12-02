@@ -10,13 +10,8 @@ import UIKit
 
 class UIMainPageViewController: UIPageViewController {
     
-    private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return [self.newController(name: "ListViewController"),
-                self.newController(name: "TimeViewController")]
-    }()
-    
-    
-    weak var tutorialDelegate: TutorialPageViewControllerDelegate?
+    private(set) lazy var orderedViewControllers: [UIViewController] = { return [self.newController(name: "AlarmListViewController"), self.newController(name: "TimeListViewController")] }()
+    private weak var tutorialDelegate: TutorialPageViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

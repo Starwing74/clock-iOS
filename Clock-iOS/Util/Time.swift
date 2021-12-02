@@ -7,44 +7,35 @@
 
 import Foundation
 
-class Alarm {
+class Time {
     private var id: Int
-    private var allowSelfUpdate: Bool = false
-    public var name: String
-    public var isoDate: String
-    public var enabled: Bool
-    public var days: [Bool]
-    private struct AlarmStruct: Codable {
+    public var address: String
+    public var timeZoneId: String
+    private struct TimeStruct: Codable {
         var id: Int
         var name: String
         var isoDate: String
-        var enabled: Bool
-        var days: [Bool]
     }
     
-    public init(alarmJSON: String) {
+    public init(timeJSON: String) {
         let decoder = JSONDecoder()
-        let alarmJSONData = alarmJSON.data(using: .utf8)!
-        let alarmStruct = try! decoder.decode(AlarmStruct.self, from: alarmJSONData)
+        let timeJSONData = timeJSON.data(using: .utf8)!
+        let timeStruct = try! decoder.decode(TimeStruct.self, from: timeJSONData)
         
-        self.id = alarmStruct.id
-        self.name = alarmStruct.name
-        self.isoDate = alarmStruct.isoDate
-        self.enabled = alarmStruct.enabled
-        self.days = alarmStruct.days
+        self.id = timeStruct.id
+        self.address = timeStruct.name
+        self.timeZoneId = timeStruct.isoDate
     }
     
-    public init(name: String?, isoDate: String, enabled: Bool, days: [Bool]) {
+    public init(name: String?, timeZoneId: String) {
         self.id = -1
-        self.name = name ?? ""
-        self.isoDate = isoDate
-        self.enabled = enabled
-        self.days = days
+        self.address = name ?? ""
+        self.timeZoneId = timeZoneId
     }
     
     private func toJSON() -> String {
-        let tempAlarm: AlarmStruct = AlarmStruct(id: id, name: name, isoDate: isoDate, enabled: enabled, days: days)
-        let jsonData = try! JSONEncoder().encode(tempAlarm)
+        let tempTime: TimeStruct = TimeStruct(id: id, name: address, isoDate: timeZoneId)
+        let jsonData = try! JSONEncoder().encode(tempTime)
         let jsonString = String(data: jsonData, encoding: .utf8)!
         return jsonString
     }
@@ -53,30 +44,30 @@ class Alarm {
         let defaults = UserDefaults.standard
         
         // Get existing data in defaults
-        var alarmIds = defaults.array(forKey: "alarmIds")  as? [Int] ?? [Int]()
+        var timeIds = defaults.array(forKey: "timeIds")  as? [Int] ?? [Int]()
 
         // Add the alarm id so we can keep track of it (if it doesn't exists)
-        if (!alarmIds.contains(id)) {
+        if (!timeIds.contains(id)) {
             var idCounter = defaults.integer(forKey: "idCounter")
             // First set id and add it
-            alarmIds.append(idCounter)
+            timeIds.append(idCounter)
             id = idCounter
             
             // Then increment id and set new value
             idCounter += 1
             defaults.set(idCounter, forKey: "idCounter")
-            defaults.set(alarmIds, forKey: "alarmIds")
+            defaults.set(timeIds, forKey: "timeIds")
         }
         
         // Set values in defaults
-        defaults.set(toJSON(), forKey: "alarm\(id)")
+        defaults.set(toJSON(), forKey: "time\(id)")
     }
     
     public func delete() {
         let defaults = UserDefaults.standard
         
         // Get existing data in defaults
-        var alarmIds = defaults.array(forKey: "alarmIds")  as? [Int] ?? [Int]()
+        var alarmIds = defaults.array(forKey: "timeIds")  as? [Int] ?? [Int]()
 
         // Add the alarm id so we can keep track of it (if it doesn't exists)
         if (alarmIds.contains(id)) {
@@ -85,10 +76,10 @@ class Alarm {
             alarmIds.remove(at: alarmIdIndex)
             
             // Remove alarm from defaults
-            defaults.removeObject(forKey: "alarm\(id)")
+            defaults.removeObject(forKey: "time\(id)")
             
             // Update values
-            defaults.set(alarmIds, forKey: "alarmIds")
+            defaults.set(alarmIds, forKey: "timeIds")
         }
     }
 }
