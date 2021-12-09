@@ -10,10 +10,10 @@ import Foundation
 class APIManager {
     
     private let googleUrl: String = "https://maps.googleapis.com/maps/api"
-    private let googleKey: String = "AIzaSyDYC2snvmp61Ebi0NJ0R_iNfkhT4a2Qs0w"
+    private let googleKey: String = ProcessInfo.processInfo.environment["googleApiKey"] ?? ""
     
-    private let timezoneUrl: String = "https://timezoneapi.io/api/timezone"
-    private let timezoneKey: String = "aATMXSVPZzMftdgmAmDu"
+    // private let timezoneUrl: String = "https://timezoneapi.io/api/timezone"
+    // private let timezoneKey: String = "aATMXSVPZzMftdgmAmDu"
     
     private func getMethod(url: String, completion: @escaping ([String: Any]) -> Void) {
         guard let url = URL(string: url) else {
@@ -43,14 +43,14 @@ class APIManager {
                     return
                 }
                 
-                guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
+                /*guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
                     print("Error: Cannot convert JSON object to Pretty JSON data")
                     return
                 }
                 guard let prettyPrintedJson = String(data: prettyJsonData, encoding: .utf8) else {
                     print("Error: Could print JSON in String")
                     return
-                }
+                }*/
 
                 completion(jsonObject)
             } catch {
@@ -63,17 +63,19 @@ class APIManager {
     func getTimeZone(address: String, completion: @escaping (String) -> Void) {
         let parsedAddress = address.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)! as String
         getMethod(url: "\(googleUrl)/geocode/json?address=\(parsedAddress)&key=\(googleKey)", completion: { jsonPosition in
-            let position = ((((jsonPosition["results"] as! Array<Any>)[0] as AnyObject)["geometry"] as AnyObject)["location"] as AnyObject)
-            let lat = position["lat"]!!
-            let lng = position["lng"]!!
+            if ((jsonPosition["results"] as! Array<Any>).count > 0) {
+                let position = ((((jsonPosition["results"] as! Array<Any>)[0] as AnyObject)["geometry"] as AnyObject)["location"] as AnyObject)
+                let lat = position["lat"]!!
+                let lng = position["lng"]!!
 
-            let timestamp = Int(NSDate().timeIntervalSince1970)
-            self.getMethod(url: "\(self.googleUrl)/timezone/json?location=\(lat),\(lng)&timestamp=\(timestamp)&key=\(self.googleKey)", completion: { jsonTimezone in
-                let timezoneId = (jsonTimezone["timeZoneId"]) as! String
-                completion(timezoneId)
-            })
-            
-            
+                let timestamp = Int(NSDate().timeIntervalSince1970)
+                self.getMethod(url: "\(self.googleUrl)/timezone/json?location=\(lat),\(lng)&timestamp=\(timestamp)&key=\(self.googleKey)", completion: { jsonTimezone in
+                    let timezoneId = (jsonTimezone["timeZoneId"]) as! String
+                    completion(timezoneId)
+                })
+            } else {
+                completion("Europe/Paris")
+            }
         })
     }
 }

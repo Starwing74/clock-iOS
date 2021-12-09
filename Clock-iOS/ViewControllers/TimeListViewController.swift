@@ -88,18 +88,22 @@ class TimeListViewController: UIViewController, UITableViewDelegate, UITableView
         _ = timeIds.popLast()
         
         // Create Alarm object
-        let timeJSON: String = defaults.string(forKey: "time\(timeId ?? 0)")!
-        let time = Time(timeJSON: timeJSON)
-        
-        // Update cell values
-        let cell = timesTable.dequeueReusableCell(withIdentifier: "dummyTime", for: indexPath) as! UITimeZoneTableViewCell
-        cell.setSource(source: self)
-        cell.setTime(time: time)
-        cell.setAddress(address: time.address)
-        cell.setTimeZoneId(timeZoneId: time.timeZoneId)
-        cell.registerUpdate()
-
-        return cell
+        let timeJSON: String = defaults.string(forKey: "time\(timeId ?? 0)") ?? "{}"
+        if (timeJSON != "{}") {
+            let time = Time(timeJSON: timeJSON)
+            
+            // Update cell values
+            let cell = timesTable.dequeueReusableCell(withIdentifier: "dummyTime", for: indexPath) as! UITimeZoneTableViewCell
+            cell.setSource(source: self)
+            cell.setTime(time: time)
+            cell.setAddress(address: time.address)
+            cell.setTimeZoneId(timeZoneId: time.timeZoneId)
+            cell.registerUpdate()
+            return cell
+        }
+        else {
+            return timesTable.dequeueReusableCell(withIdentifier: "dummyTime", for: indexPath) as! UITimeZoneTableViewCell
+        }
     }
 }
 
